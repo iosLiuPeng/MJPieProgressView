@@ -13,6 +13,7 @@
 		069B95862091CED5009CEEEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 069B95852091CED5009CEEEF /* Assets.xcassets */; };
 		069B95892091CED5009CEEEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 069B95872091CED5009CEEEF /* LaunchScreen.storyboard */; };
 		069B958C2091CED5009CEEEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 069B958B2091CED5009CEEEF /* main.m */; };
+		069B95952091CF29009CEEEF /* MJPieProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 069B95942091CF29009CEEEF /* MJPieProgressView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		069B95882091CED5009CEEEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		069B958A2091CED5009CEEEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		069B958B2091CED5009CEEEF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		069B95932091CF29009CEEEF /* MJPieProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJPieProgressView.h; sourceTree = "<group>"; };
+		069B95942091CF29009CEEEF /* MJPieProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJPieProgressView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 		069B957B2091CED4009CEEEF /* MJPieProgressView */ = {
 			isa = PBXGroup;
 			children = (
+				069B95922091CF17009CEEEF /* Classes */,
 				069B957C2091CED5009CEEEF /* AppDelegate.h */,
 				069B957D2091CED5009CEEEF /* AppDelegate.m */,
 				069B957F2091CED5009CEEEF /* ViewController.h */,
@@ -70,6 +74,15 @@
 			);
 			path = MJPieProgressView;
 			sourceTree = "<group>";
+		};
+		069B95922091CF17009CEEEF /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				069B95932091CF29009CEEEF /* MJPieProgressView.h */,
+				069B95942091CF29009CEEEF /* MJPieProgressView.m */,
+			);
+			path = Classes;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -144,6 +157,7 @@
 				069B95812091CED5009CEEEF /* ViewController.m in Sources */,
 				069B958C2091CED5009CEEEF /* main.m in Sources */,
 				069B957E2091CED5009CEEEF /* AppDelegate.m in Sources */,
+				069B95952091CF29009CEEEF /* MJPieProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +300,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76MM79XMJ9;
 				INFOPLIST_FILE = MJPieProgressView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,6 +318,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76MM79XMJ9;
 				INFOPLIST_FILE = MJPieProgressView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
