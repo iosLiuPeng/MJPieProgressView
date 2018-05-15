@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'MJPieProgressView'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Pie chart, Pie progress bar.'
   s.homepage         = 'https://github.com/iosLiuPeng/MJPieProgressView'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }

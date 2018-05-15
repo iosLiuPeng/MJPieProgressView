@@ -7,9 +7,14 @@
 //
 
 #import "ViewController.h"
+#import "MJPieProgressView.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet MJPieProgressView *view1;
+@property (weak, nonatomic) IBOutlet MJPieProgressView *view2;
+@property (weak, nonatomic) IBOutlet MJPieProgressView *view3;
 
+@property (weak, nonatomic) IBOutlet UISlider *slider;
 @end
 
 @implementation ViewController
@@ -19,10 +24,10 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)sliderAction:(UISlider *)sender {
+    _view1.progress = sender.value;
+    _view2.progress = sender.value;
+    _view3.progress = sender.value;
 }
 
 

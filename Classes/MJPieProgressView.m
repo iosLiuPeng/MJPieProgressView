@@ -34,30 +34,17 @@
 #pragma mark - Subjoin
 - (void)viewConfig
 {
-    _pieColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
-    _maxWidth = 50.0;
-    
-    self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
     self.userInteractionEnabled = NO;
 }
 
-#pragma mark - set & get
+#pragma mark - Set & Get
 - (void)setProgress:(CGFloat)progress
 {
-    _progress = progress;
-    [self setNeedsDisplay];
-}
-
-- (void)setMaxWidth:(CGFloat)maxWidth
-{
-    _maxWidth = maxWidth;
-    [self setNeedsDisplay];
-}
-
-- (void)setPieColor:(UIColor *)pieColor
-{
-    _pieColor = pieColor;
-    [self setNeedsDisplay];
+    if (progress >= 0 && progress <= 1) {
+        _progress = progress;
+        
+        [self setNeedsDisplay];
+    }
 }
 
 #pragma mark - Overwirte
@@ -66,39 +53,43 @@
     CGFloat width = rect.size.width;
     CGFloat height = rect.size.height;
     
-    //最短边
+    // 最短边
     CGFloat shortSide = MIN(width, height);
-    //半径
-    CGFloat radius = MIN(_maxWidth, shortSide) / 2.0 - 1;
+    // 半径
+    CGFloat radius = shortSide / 2.0 - 1;
+    if (_maxWidth > 0) {
+        radius = MIN(_maxWidth, shortSide) / 2.0 - 1;
+    }
+    // 中心点
+    CGPoint center = CGPointMake(width / 2.0, height / 2.0);
     
-    //获取上下文
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    //画圆环
-    CGContextAddArc(context, width / 2.0, height / 2.0, radius, 0, 2 * M_PI, 0);
-    CGContextSetStrokeColorWithColor(context, _pieColor.CGColor);//设置笔触颜色
-    CGContextSetLineWidth(context, 1.0);//设置线条宽度
-    CGContextStrokePath(context);//绘画路径
-    
-    
-    //进度
-    CGFloat progress = 0;
-    if (_progress < 0) {
-        progress = 0;
-    } else if (_progress > 1) {
-        progress = 1;
-    } else {
-        progress = _progress;
+    // 圆环颜色
+    UIColor *color = _annulusColor;
+    if (color == nil) {
+        if (_pieColor) {
+            color = _pieColor;// 没有指颜色时，其次显示扇形填充色
+        } else {
+            color = _bgColor;// 最后显示扇形背景色
+        }
     }
     
-    //画扇形
+    // 画圆
+    UIBezierPath *roundness = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:0 endAngle:2 * M_PI clockwise:YES];
+    roundness.lineWidth = 1;
+    if (_bgColor) {
+        [_bgColor set];
+        [roundness fill];
+    }
+    [color set];
+    [roundness stroke];
+    
+    // 画扇形
     CGFloat startAngle = - M_PI / 2.0;
-    CGFloat endAngle = progress * 2 * M_PI + startAngle;
-    CGContextAddArc(context, width / 2.0, height / 2.0, radius, startAngle, endAngle, 0);
-    CGContextAddLineToPoint(context, width / 2.0, height / 2.0);
-    CGContextClosePath(context);
-    CGContextSetFillColorWithColor(context, _pieColor.CGColor);//填充色
-    CGContextFillPath(context);//绘画路径
+    CGFloat endAngle = _progress * 2 * M_PI + startAngle;
+    UIBezierPath *sector = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
+    [sector addLineToPoint:center];
+    [_pieColor set];
+    [sector fill];
 }
 
 @end

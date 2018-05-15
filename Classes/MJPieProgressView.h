@@ -11,6 +11,9 @@
 IB_DESIGNABLE
 @interface MJPieProgressView : UIView
 @property (nonatomic, assign) IBInspectable CGFloat progress;     ///< 进度
-@property (nonatomic, assign) IBInspectable CGFloat maxWidth;     ///< 最大宽度
 @property (nonatomic, strong) IBInspectable UIColor *pieColor;    ///< 扇形颜色
+@property (nonatomic, strong) IBInspectable UIColor *annulusColor;///< 圆环颜色
+@property (nonatomic, strong) IBInspectable UIColor *bgColor;     ///< 扇形背景颜色
+
+@property (nonatomic, assign) IBInspectable CGFloat maxWidth;     ///< 最大宽度
 @end
