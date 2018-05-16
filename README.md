@@ -6,11 +6,11 @@
 pod 'MJPieProgressView'  
 
 
-xcode预览
+xcode预览  
 ![支持预览][screenshot]
 
 
-
+gif图  
 ![gif][gif]
 
 --------------------------------
